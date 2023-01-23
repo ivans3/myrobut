@@ -31,5 +31,8 @@ RUN git clone https://github.com/eProsima/Fast-CDR.git && mkdir Fast-CDR/build &
 #For client-side:
 RUN apt-get install -y python3-sdl2
 
+#To use SDL_Image.so instead of PIL for image loading:
+RUN apt-get update && apt-get install -y libsdl-image1.2-dev
+
 RUN touch /root/.Xauthority
 

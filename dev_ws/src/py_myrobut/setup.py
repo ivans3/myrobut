@@ -40,6 +40,7 @@ setup(
         'console_scripts': [
             'service = py_myrobut.service_member_function:main',
             'client = py_myrobut.client_member_function:main',
+            'client_touch = py_myrobut.client_touch_member_function:main',
         ],
     },
 )

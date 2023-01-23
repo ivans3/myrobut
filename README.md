@@ -30,4 +30,15 @@ Use the Arrow keys on the keyboard, PLUS:
 A - Spin Left
 D - Spin Right
 
+### NEW: Touchpad (phone/tablet)-based client with FPV:
+```
+sudo podman run -t -v $PWD:/root --rm --net=host --pid=host -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=${DISPLAY} --privileged myeloquent:latest /bin/bash -c 'cd /root/dev_ws && source install/setup.bash && ros2 run py_myrobut client_touch'
+```
+
+* Currently Uses: https://github.com/silvanmelchior/RPi_Cam_Web_Interface for video server
+* ![client_touch.png](client_touch.png)
+
+
+
+
 

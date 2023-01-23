@@ -3,6 +3,8 @@ import sys
 from myrobut_interfaces.srv import PerformMove
 import rclpy
 from rclpy.node import Node
+from std_msgs.msg import String
+
 
 import sdl2.ext
 import time,math,copy,os
@@ -63,6 +65,15 @@ class PerformMoveClientAsync(Node):
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = PerformMove.Request()
+        self.subscription = self.create_subscription(
+          String,
+          'topic',
+          self.listener_callback,
+          10)
+        self.subscription # prevent unused warning
+ 
+    def listener_callback(self ,msg):
+        self.get_logger().info('I heard: "%s"' % msg.data)
 
     def send_request(self,a_req_number,a_drive_left,a_drive_right,a_max_execution_time):
         self.req.req_number = a_req_number
